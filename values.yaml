@@ -63,3 +63,20 @@ readinessProbe:
   timeoutSeconds: 30
   failureThreshold: 3
   successThreshold: 1
+
+## @section Exposure parameters
+##
+
+## Service configuration
+##
+service:
+  ## @param service.http.enabled Enable http port on service
+  ##
+  http:
+    enabled: true
+  ## @param service.ports.http Keycloak service HTTP port
+  ## @param service.ports.https Keycloak service HTTPS port
+  ##
+  ports:
+    http: 80
+    https: 443

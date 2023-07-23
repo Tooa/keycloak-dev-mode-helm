@@ -16,12 +16,12 @@ Send scope "webclient-scope openid" in Postname or change custom claim handling
 $ kind create cluster --config kind-config.yaml
 $ helm install keycloak .
 
-$ keycloak-helm k get services
+$ k get services
 NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
-keycloak-service   ClusterIP   10.96.217.143   <none>        53582/TCP   12s
+keycloak-service   ClusterIP   10.96.217.143   <none>        80/TCP      12s
 kubernetes         ClusterIP   10.96.0.1       <none>        443/TCP     36m
 
-$ keycloak-helm kubectl port-forward service/keycloak-service 8100:53582
+$ k port-forward service/keycloak-service 8100:80
 $ curl -X GET http://localhost:8100/
 
 # Inspect Pod logs
