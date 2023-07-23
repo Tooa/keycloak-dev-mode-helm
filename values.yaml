@@ -19,18 +19,18 @@ image:
   pullSecrets: []
 
 
-# TODO The following is not in use yet
-
 ## Keycloak authentication parameters
 
 auth:
   ## @param auth.adminUser Keycloak administrator user
   ##
-  adminUser: user
+  adminUser: admin
   ## @param auth.adminPassword Keycloak administrator password for the new user
   ##
-  adminPassword: ""
+  adminPassword: "admin"
 
+
+# TODO The following are not in use yet
 
 ## @param replicaCount Number of Keycloak replicas to deploy
 ##

@@ -33,9 +33,12 @@ spec:
         args: ["start-dev --import-realm"]
         env: 
           - name: "KEYCLOAK_ADMIN"
-            value: "admin"
+            value: {{ .Values.auth.adminUser }}
           - name: "KEYCLOAK_ADMIN_PASSWORD"
-            value: "admin"
+            valueFrom:
+              secretKeyRef:
+                name: keycloak-password
+                key: password
         ports:
           - name: http
             containerPort: 8080
