@@ -30,11 +30,14 @@ auth:
   adminPassword: "admin"
 
 
-# TODO The following are not in use yet
-
-## @param replicaCount Number of Keycloak replicas to deploy
+## HTTPS settings
+## ref: https://github.com/bitnami/containers/tree/main/bitnami/keycloak#tls-encryption
 ##
-replicaCount: 1
+tls:
+  ## @param tls.enabled Enable TLS encryption. Required for HTTPs traffic.
+  ##
+  enabled: false
+
 
 ## @param containerPorts.http Keycloak HTTP container port
 ## @param containerPorts.https Keycloak HTTPS container port
