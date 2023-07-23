@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: keycloak
+spec:
+  serviceName: "keycloak"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+    {{- with .Values.image.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      volumes: 
+        - name: realm-cm-file
+          configMap:
+            name: keycloak-configmap
+            items:
+              - key: myrealm-realm.json
+                path: myrealm-realm.json
+              - key: myrealm-users-0.json
+                path: myrealm-users-0.json
+      containers:
+      - name: keycloak
+        image: {{ template "keycloak.image" . }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args: ["start-dev --import-realm"]
+        env: 
+          - name: "KEYCLOAK_ADMIN"
+            value: "admin"
+          - name: "KEYCLOAK_ADMIN_PASSWORD"
+            value: "admin"
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+          - name: https
+            containerPort: 8443
+            protocol: TCP
+          - name: infinispan
+            containerPort: 7800
+            protocol: TCP
+        volumeMounts:
+          - mountPath: /opt/keycloak/data/import
+            name: realm-cm-file
+        readinessProbe:
+          httpGet:
+            path: /realms/myrealm
+            port: 8080
+          initialDelaySeconds: 30
+          timeoutSeconds: 30

@@ -1,0 +1,62 @@
+{
+    "realm" : "myrealm",
+    "clients" : [ 
+        {
+            "id": "71a86ce5-0fcd-4c70-869c-012e7fd5be5d",
+            "clientId": "webclient",
+            "name": "postman-app",
+            "description": "",
+            "rootUrl": "",
+            "adminUrl": "",
+            "baseUrl": "",
+            "surrogateAuthRequired": false,
+            "enabled": true,
+            "alwaysDisplayInConsole": false,
+            "clientAuthenticatorType": "client-secret",
+            "secret": "BUrcJnnSWwfbMRpoF9fD9PEu1leVlwh0",
+            "redirectUris": [
+              "http://localhost:8000",
+              "https://oauth.pstmn.io/v1/callback"
+            ],
+            "webOrigins": [
+              "https://oauth.pstmn.io",
+              "http://localhost:8000"
+            ],
+            "notBefore": 0,
+            "bearerOnly": false,
+            "consentRequired": false,
+            "standardFlowEnabled": true,
+            "implicitFlowEnabled": false,
+            "directAccessGrantsEnabled": false,
+            "serviceAccountsEnabled": false,
+            "publicClient": false,
+            "frontchannelLogout": true,
+            "protocol": "openid-connect",
+            "attributes": {
+              "oidc.ciba.grant.enabled": "false",
+              "client.secret.creation.time": "1690116131",
+              "backchannel.logout.session.required": "true",
+              "post.logout.redirect.uris": "+",
+              "oauth2.device.authorization.grant.enabled": "false",
+              "backchannel.logout.revoke.offline.tokens": "false"
+            },
+            "authenticationFlowBindingOverrides": {},
+            "fullScopeAllowed": true,
+            "nodeReRegistrationTimeout": -1,
+            "defaultClientScopes": [
+              "web-origins",
+              "webclient-scope",
+              "acr",
+              "profile",
+              "roles",
+              "email"
+            ],
+            "optionalClientScopes": [
+              "address",
+              "phone",
+              "offline_access",
+              "microprofile-jwt"
+            ]
+        }
+     ]
+}

@@ -1,0 +1,46 @@
+---
+
+## @section Keycloak parameters
+
+## Keycloak image version
+
+image:
+  registry: quay.io
+  repository: keycloak/keycloak
+  tag: 22.0.1
+  pullPolicy: IfNotPresent
+  ## Optionally specify an array of imagePullSecrets.
+  ## Secrets must be manually created in the namespace.
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+  ## Example:
+  ## pullSecrets:
+  ##   - myRegistryKeySecretName
+  ##
+  pullSecrets: []
+
+
+# TODO The following is not in use yet
+
+## Keycloak authentication parameters
+
+auth:
+  ## @param auth.adminUser Keycloak administrator user
+  ##
+  adminUser: user
+  ## @param auth.adminPassword Keycloak administrator password for the new user
+  ##
+  adminPassword: ""
+
+
+## @param replicaCount Number of Keycloak replicas to deploy
+##
+replicaCount: 1
+
+## @param containerPorts.http Keycloak HTTP container port
+## @param containerPorts.https Keycloak HTTPS container port
+## @param containerPorts.infinispan Keycloak infinispan container port
+##
+containerPorts:
+  http: 8080
+  https: 8443
+  infinispan: 7800

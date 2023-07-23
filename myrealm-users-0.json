@@ -1,0 +1,54 @@
+{
+    "realm" : "myrealm",
+    "users" : [ {
+      "id" : "4c973896-5761-41fc-8217-07c5d13a004b",
+      "createdTimestamp" : 1505479415590,
+      "username" : "admin",
+      "enabled" : true,
+      "totp" : false,
+      "emailVerified" : true,
+      "firstName" : "Admin",
+      "lastName" : "Administrator",
+      "email" : "admin@localhost",
+      "attributes": { "age": ["10"] },
+      "credentials" : [ 
+        {
+            "type": "password",
+            "value": "admin"
+          }
+       ],
+      "disableableCredentialTypes" : [ "password" ],
+      "requiredActions" : [ ],
+      "realmRoles" : [ "offline_access", "uma_authorization" ],
+      "clientRoles" : {
+        "account" : [ "view-profile", "manage-account" ]
+      },
+      "notBefore" : 0,
+      "groups" : [ ]
+    }, {
+      "id" : "c4af4e2f-b432-4c3b-8405-cca86cd5b97b",
+      "createdTimestamp" : 1505479373742,
+      "username" : "user",
+      "enabled" : true,
+      "totp" : false,
+      "emailVerified" : true,
+      "firstName" : "",
+      "lastName" : "User",
+      "email" : "user@localhost",
+      "attributes": { "age": ["10"] },
+      "credentials" : [
+        {
+            "type": "password",
+            "value": "password"
+          }
+      ],
+      "disableableCredentialTypes" : [ "password" ],
+      "requiredActions" : [ ],
+      "realmRoles" : [ "offline_access", "uma_authorization" ],
+      "clientRoles" : {
+        "account" : [ "view-profile", "manage-account" ]
+      },
+      "notBefore" : 0,
+      "groups" : [  ]
+    } ]
+  }
