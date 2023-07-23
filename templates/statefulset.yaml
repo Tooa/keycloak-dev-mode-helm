@@ -51,12 +51,12 @@ spec:
           - name: infinispan
             containerPort:  {{ .Values.containerPorts.infinispan }}
             protocol: TCP
+        {{- if .Values.readinessProbe.enabled }}
+        readinessProbe: {{- omit .Values.readinessProbe "enabled" | toYaml | nindent 10 }}
+          httpGet:
+            path: /realms/master
+            port: http
+        {{- end }}
         volumeMounts:
           - mountPath: /opt/keycloak/data/import
             name: realm-cm-file
-        readinessProbe:
-          httpGet:
-            path: /realms/myrealm
-            port: 8080
-          initialDelaySeconds: 30
-          timeoutSeconds: 30
