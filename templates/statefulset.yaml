@@ -2,13 +2,13 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: keycloak
+  name: {{ .Release.Name }}
 spec:
-  serviceName: "keycloak"
+  serviceName: {{ .Release.Name }}
   replicas: 1
   selector:
     matchLabels:
-      app: keycloak
+      app: {{ .Release.Name }}
   template:
     metadata:
       annotations:
@@ -16,7 +16,7 @@ spec:
         # See: https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
         checksum/config: {{ include (print $.Template.BasePath "/realm-configmap.yaml") . | sha256sum }}
       labels:
-        app: keycloak
+        app: {{ .Release.Name }}
     spec:
     {{- with .Values.image.pullSecrets }}
       imagePullSecrets:
@@ -25,7 +25,7 @@ spec:
       volumes: 
         - name: realm-cm-file
           configMap:
-            name: keycloak-configmap
+            name: {{ .Release.Name }}-configmap
             items:
               - key: myrealm-realm.json
                 path: myrealm-realm.json
@@ -42,7 +42,7 @@ spec:
           - name: "KEYCLOAK_ADMIN_PASSWORD"
             valueFrom:
               secretKeyRef:
-                name: keycloak-password
+                name: {{ .Release.Name }}-password
                 key: password
         ports:
           - name: http

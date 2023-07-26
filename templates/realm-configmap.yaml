@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: keycloak-configmap
+  name: {{ .Release.Name }}-configmap
 data:
   myrealm-realm.json: |-
-{{ .Files.Get "myrealm-realm.json" | indent 4}}
+{{ .Files.Get "myrealm-realm.json" | indent 4 }}
   myrealm-users-0.json: |-
-{{ .Files.Get "myrealm-users-0.json" | indent 4}}
+{{ .Files.Get "myrealm-users-0.json" | indent 4 }}
