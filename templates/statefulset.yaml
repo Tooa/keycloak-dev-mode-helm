@@ -27,9 +27,9 @@ spec:
           configMap:
             name: {{ .Release.Name }}-configmap
             items:
-              - key: {{ .Values.realm.name }}-realm.json
+              - key: bootstrap-realm.json
                 path: {{ .Values.realm.name }}-realm.json
-              - key: {{ .Values.realm.name }}-users-0.json
+              - key: bootstrap-users-0.json
                 path: {{ .Values.realm.name }}-users-0.json
       containers:
       - name: keycloak
@@ -47,6 +47,8 @@ spec:
                 name: {{ .Release.Name }}-password
                 key: password
           # Custom environment variables
+
+          # Substitute realm name in bootstrap template
           # See: myrealm-realm.json and myrealm-users-0.json
           - name: BOOTSTRAP_REALM_NAME
             value: {{ .Values.realm.name }}

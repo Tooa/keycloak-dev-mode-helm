@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  {{ .Values.realm.name }}-realm.json: |-
+  bootstrap-realm.json: |-
 {{ .Files.Get (printf "%s-%s" .Values.realm.name "realm.json") | indent 4 }}
-  {{ .Values.realm.name }}-users-0.json: |-
+  bootstrap-users-0.json: |-
 {{ .Files.Get (printf "%s-%s" .Values.realm.name "users-0.json") | indent 4 }}
