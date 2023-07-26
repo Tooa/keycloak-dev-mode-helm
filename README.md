@@ -14,7 +14,8 @@ Send scope "webclient-scope openid" in Postname or change custom claim handling
 ```bash
 # Deployment via Kind (Kubernetes in Docker) for testing purposes. Your setup may vary
 $ kind create cluster --config kind-config.yaml
-$ helm install keycloak .
+# Install or upgrade chart
+helm upgrade --install keycloak .
 
 $ k get services
 NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE

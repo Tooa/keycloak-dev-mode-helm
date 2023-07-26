@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -10,6 +11,10 @@ spec:
       app: keycloak
   template:
     metadata:
+      annotations:
+        # Restart pod when config map changes
+        # See: https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
+        checksum/config: {{ include (print $.Template.BasePath "/realm-configmap.yaml") . | sha256sum }}
       labels:
         app: keycloak
     spec:
