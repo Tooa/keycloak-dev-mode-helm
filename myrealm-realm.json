@@ -1,6 +1,6 @@
 {
   "id": "2288e73b-b5c5-441b-801e-210ce66a0695",
-  "realm": "myrealm",
+  "realm": "${BOOTSTRAP_REALM_NAME}",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -65,7 +65,7 @@
       },
       {
         "id": "4d816307-7d57-4bba-8a1c-4a47b11cface",
-        "name": "default-roles-myrealm",
+        "name": "default-roles-${BOOTSTRAP_REALM_NAME}",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -406,7 +406,7 @@
   "groups": [],
   "defaultRole": {
     "id": "4d816307-7d57-4bba-8a1c-4a47b11cface",
-    "name": "default-roles-myrealm",
+    "name": "default-roles-${BOOTSTRAP_REALM_NAME}",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
@@ -476,13 +476,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/myrealm/account/",
+      "baseUrl": "/realms/${BOOTSTRAP_REALM_NAME}/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/myrealm/account/*"
+        "/realms/${BOOTSTRAP_REALM_NAME}/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -520,13 +520,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/myrealm/account/",
+      "baseUrl": "/realms/${BOOTSTRAP_REALM_NAME}/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/myrealm/account/*"
+        "/realms/${BOOTSTRAP_REALM_NAME}/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -695,13 +695,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/myrealm/console/",
+      "baseUrl": "/admin/${BOOTSTRAP_REALM_NAME}/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/myrealm/console/*"
+        "/admin/${BOOTSTRAP_REALM_NAME}/console/*"
       ],
       "webOrigins": [
         "+"

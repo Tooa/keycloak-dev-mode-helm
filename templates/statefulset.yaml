@@ -27,16 +27,18 @@ spec:
           configMap:
             name: {{ .Release.Name }}-configmap
             items:
-              - key: myrealm-realm.json
-                path: myrealm-realm.json
-              - key: myrealm-users-0.json
-                path: myrealm-users-0.json
+              - key: {{ .Values.realm.name }}-realm.json
+                path: {{ .Values.realm.name }}-realm.json
+              - key: {{ .Values.realm.name }}-users-0.json
+                path: {{ .Values.realm.name }}-users-0.json
       containers:
       - name: keycloak
         image: {{ template "keycloak.image" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         args: ["start-dev --import-realm"]
         env: 
+        # Official keycloak environment variables
+        # See: https://www.keycloak.org/server/all-config
           - name: "KEYCLOAK_ADMIN"
             value: {{ .Values.auth.adminUser }}
           - name: "KEYCLOAK_ADMIN_PASSWORD"
@@ -44,6 +46,10 @@ spec:
               secretKeyRef:
                 name: {{ .Release.Name }}-password
                 key: password
+          # Custom environment variables
+          # See: myrealm-realm.json and myrealm-users-0.json
+          - name: BOOTSTRAP_REALM_NAME
+            value: {{ .Values.realm.name }}
         ports:
           - name: http
             containerPort: {{ .Values.containerPorts.http }}

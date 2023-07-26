@@ -96,3 +96,10 @@ resources:
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+## @section bootstrap realm configuration
+
+realm:
+  # The bootstrap config files 'myrealm-realm.json' and 'myrealm-users-0.json' have to start with the realm name
+  # to be imported. The import fails otherwise.
+  name: myrealm
