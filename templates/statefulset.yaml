@@ -65,3 +65,5 @@ spec:
         volumeMounts:
           - mountPath: /opt/keycloak/data/import
             name: realm-cm-file
+        resources:
+            {{- toYaml .Values.resources | nindent 12 }}
