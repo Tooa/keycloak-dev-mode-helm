@@ -24,7 +24,7 @@
         "account" : [ "view-profile", "manage-account" ]
       },
       "notBefore" : 0,
-      "groups" : [ ]
+      "groups" : [ "Admin" ]
     }, {
       "id" : "c4af4e2f-b432-4c3b-8405-cca86cd5b97b",
       "createdTimestamp" : 1505479373742,
@@ -49,6 +49,6 @@
         "account" : [ "view-profile", "manage-account" ]
       },
       "notBefore" : 0,
-      "groups" : [  ]
+      "groups" : [ "User" ]
     } ]
   }
